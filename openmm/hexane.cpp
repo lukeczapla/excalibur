@@ -239,13 +239,13 @@ void hexane::setup() {
 			nonbonded->setReactionFieldDielectric(1.0);
 		}
 		if (usegbvi) {
-			gbvi->setNonbondedMethod(GBVIForce::CutoffNonPeriodic);
+			gbvi->setNonbondedMethod(GBSAOBCForce::CutoffNonPeriodic);
 			gbvi->setCutoffDistance(cutoff);
 			gbvi->setSolventDielectric(78.5);
 			gbvi->setSoluteDielectric(1.0);
-			gbvi->setBornRadiusScalingMethod(GBVIForce::QuinticSpline);
-			gbvi->setQuinticLowerLimitFactor(0.4);
-			gbvi->setQuinticUpperBornRadiusLimit(cutoff);
+		//	gbvi->setBornRadiusScalingMethod(OBC2Force::QuinticSpline);
+		//	gbvi->setQuinticLowerLimitFactor(0.4);
+		//	gbvi->setQuinticUpperBornRadiusLimit(cutoff);
 			nonbonded->setReactionFieldDielectric(1.0);
 		}
 		nonbonded->setNonbondedMethod(NonbondedForce::CutoffNonPeriodic);

@@ -18,7 +18,7 @@
 # gcc 4.1.2.
 
 # Check whether this is the right capitalization for your install directory.
-OpenMM_INSTALL_DIR=/usr/local/openmm
+OpenMM_INSTALL_DIR=/home/luke/miniconda3
 CFLAGS = -std=c++0x -Iopenmm -Imolecules -g 
 FFLAGS = -g -ffree-line-length-none
 
@@ -28,7 +28,7 @@ FFLAGS = -g -ffree-line-length-none
 
 LIB_DIR=$(OpenMM_INSTALL_DIR)/lib
 INCLUDE_DIR=$(OpenMM_INSTALL_DIR)/include -I$(OpenMM_INSTALL_DIR)/include/openmm/internal
-LIBS= -lOpenMM
+LIBS=-L/usr/luke/miniconda3/lib -lOpenMM
 
 ALL_PROGS = runserialize runclone runclone-resume runmd runhexane runhexane_TI # rungcmc
 
