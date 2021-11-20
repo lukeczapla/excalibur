@@ -1,5 +1,5 @@
 
-The Sword in the Stone was locked in place for 8 years until Tabitha the Cat came around to weild..... EXCALIBUR!
+The Sword in the Stone was locked in place for 8 years until Tabitha the Cat came around to wield..... EXCALIBUR!
 
 
 Standalone MD simulation run SYNTAX:
@@ -28,6 +28,5 @@ it would run in a separate terminal left open, just type "./visualizer 7001"
 "./runserialize system.psf system.pdb par_file1 par_file2 ..."
 
 The System object will be read from system.xml at the moment.
-
 
 
