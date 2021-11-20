@@ -1,0 +1,8 @@
+ATOM      1  OH2 TIP W   1      25.111  14.783 -17.521  1.00  0.00      WATA
+ATOM      2  H1  TIP W   1      25.111  15.740 -17.521  1.00  0.00      WATA
+ATOM      3  H2  TIP W   1      25.111  14.543 -18.448  1.00  0.00      WATA
+ATOM      4  OH2 TIP W   2       5.111  14.783 -17.521  1.00  0.00      WATA
+ATOM      5  H1  TIP W   2       5.111  15.740 -17.521  1.00  0.00      WATA
+ATOM      6  H2  TIP W   2       5.111  14.543 -18.448  1.00  0.00      WATA
+TER       7      TIP3     2
+END

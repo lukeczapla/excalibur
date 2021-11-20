@@ -1,0 +1,8 @@
+ATOM      1  C1  HEX H   1     -10.769 -17.416   1.528  1.00 20.00      HEXA
+ATOM      2  C2  HEX H   1      -9.603 -18.392   1.688  1.00 20.00      HEXA
+ATOM      3  C3  HEX H   1      -9.450 -18.770   3.161  1.00 20.00      HEXA
+ATOM      4  C4  HEX H   1      -8.284 -19.746   3.320  1.00 20.00      HEXA
+ATOM      5  C5  HEX H   1      -8.131 -20.124   4.794  1.00 20.00      HEXA
+ATOM      6  C6  HEX H   1      -6.965 -21.100   4.953  1.00 20.00      HEXA
+TER       7      HEXA     1
+END

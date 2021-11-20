@@ -1,0 +1,102 @@
+*  --------------------------------------------------------------------------  *
+*          CGenFF: Topology for the Charmm General Force Field v. 2b8          *
+*                    for Small Molecule Drug Design                            *
+*  --------------------------------------------------------------------------  *
+*
+36  1
+
+MASS     1 HO       1.00800  ! terminal OH hydrogen  
+MASS     2 OA      15.99940  ! terminal OH oxygen  
+MASS     3 CM      14.02900  ! -CH2- group           
+MASS     4 CT      15.03800  ! -CH3 group         
+MASS     5 OM      15.99940  ! -O- ether oxygen
+
+AUTOGEN ANGLES
+
+RESI PEG6          0.0000 ! PEG C6E6
+GROUP
+ATOM HA   HO      0.42
+ATOM OA   OA     -0.65
+ATOM CA   CM      0.23
+ATOM C11  CM      0.17
+ATOM O1   OM     -0.34
+ATOM C12  CM      0.17
+ATOM C21  CM      0.17
+ATOM O2   OM     -0.34
+ATOM C22  CM      0.17
+ATOM C31  CM      0.17
+ATOM O3   OM     -0.34
+ATOM C32  CM      0.17
+ATOM C41  CM      0.17
+ATOM O4   OM     -0.34
+ATOM C42  CM      0.17
+ATOM C51  CM      0.17
+ATOM O5   OM     -0.34
+ATOM C52  CM      0.17
+ATOM C61  CM      0.17
+ATOM O6   OM     -0.34
+ATOM C62  CM      0.17
+ATOM CM1  CM      0.00
+ATOM CM2  CM      0.00
+ATOM CM3  CM      0.00
+ATOM CM4  CM      0.00
+ATOM CT   CT      0.00
+BOND HA OA    OA CA    CA C11
+BOND C11 O1   O1 C12   C12 C21
+BOND C21 O2   O2 C22   C22 C31
+BOND C31 O3   O3 C32   C32 C41
+BOND C41 O4   O4 C42   C42 C51
+BOND C51 O5   O5 C52   C52 C61
+BOND C61 O6   O6 C62   C62 CM1
+BOND CM1 CM2  CM2 CM3  CM3 CM4
+BOND CM4 CT
+DIHE  HA  OA  CA C11 
+DIHE  OA  CA C11  O1 
+DIHE  CA C11  O1 C12 
+DIHE C11  O1 C12 C21 
+DIHE  O1 C12 C21  O2 
+DIHE C12 C21  O2 C22 
+DIHE C21  O2 C22 C31 
+DIHE  O2 C22 C31  O3 
+DIHE C22 C31  O3 C32 
+DIHE C31  O3 C32 C41 
+DIHE  O3 C32 C41  O4 
+DIHE C32 C41  O4 C42 
+DIHE C41  O4 C42 C51 
+DIHE  O4 C42 C51  O5 
+DIHE C42 C51  O5 C52 
+DIHE C51  O5 C52 C61 
+DIHE  O5 C52 C61  O6 
+DIHE C52 C61  O6 C62 
+DIHE C61  O6 C62 CM1 
+DIHE  O6 C62 CM1 CM2 
+DIHE C62 CM1 CM2 CM3 
+DIHE CM1 CM2 CM3 CM4 
+DIHE CM2 CM3 CM4  CT 
+
+IC  HA  OA  CA C11     0.0000    0.00  120.00    0.00   0.0000
+IC  OA  CA C11  O1     0.0000    0.00  120.00    0.00   0.0000
+IC  CA C11  O1 C12     0.0000    0.00  120.00    0.00   0.0000
+IC C11  O1 C12 C21     0.0000    0.00  120.00    0.00   0.0000
+IC  O1 C12 C21  O2     0.0000    0.00  120.00    0.00   0.0000
+IC C12 C21  O2 C22     0.0000    0.00  120.00    0.00   0.0000
+IC C21  O2 C22 C31     0.0000    0.00  120.00    0.00   0.0000
+IC  O2 C22 C31  O3     0.0000    0.00  120.00    0.00   0.0000
+IC C22 C31  O3 C32     0.0000    0.00  120.00    0.00   0.0000
+IC C31  O3 C32 C41     0.0000    0.00  120.00    0.00   0.0000
+IC  O3 C32 C41  O4     0.0000    0.00  120.00    0.00   0.0000
+IC C32 C41  O4 C42     0.0000    0.00  120.00    0.00   0.0000
+IC C41  O4 C42 C51     0.0000    0.00  120.00    0.00   0.0000
+IC  O4 C42 C51  O5     0.0000    0.00  120.00    0.00   0.0000
+IC C42 C51  O5 C52     0.0000    0.00  120.00    0.00   0.0000
+IC C51  O5 C52 C61     0.0000    0.00  120.00    0.00   0.0000
+IC  O5 C52 C61  O6     0.0000    0.00  120.00    0.00   0.0000
+IC C52 C61  O6 C62     0.0000    0.00  120.00    0.00   0.0000
+IC C61  O6 C62 CM1     0.0000    0.00  120.00    0.00   0.0000
+IC  O6 C62 CM1 CM2     0.0000    0.00  120.00    0.00   0.0000
+IC C62 CM1 CM2 CM3     0.0000    0.00  120.00    0.00   0.0000
+IC CM1 CM2 CM3 CM4     0.0000    0.00  120.00    0.00   0.0000
+IC CM2 CM3 CM4  CT     0.0000    0.00  120.00    0.00   0.0000
+
+END
+

@@ -1,0 +1,43 @@
+
+ATOMS
+MASS     1 HO       1.00800  ! terminal OH hydrogen
+MASS     2 OA      15.99940  ! terminal OH oxygen
+MASS     3 CM      14.02900  ! -CH2- group
+MASS     4 CT      15.03800  ! -CH3 group
+MASS     5 OM      15.99940  ! -O- ether oxygen
+
+
+BONDS
+CM CM  300.0  1.53
+CM CT  300.0  1.53
+CM OM  360.0  1.415
+CM OA  360.0  1.415
+OA HO  200.0  1.00
+
+ANGLES
+HO    OA    CM  50.000    106.50 
+OA    CM    CM  50.000    111.00
+CM    CM    OM  50.000    111.00
+CM    OM    CM  50.000    111.00
+CM    CM    CM  50.000    112.00
+CM    CM    CT  50.000    112.00
+
+DIHEDRALS
+!atom types             Kchi    n   delta
+HO   OA    CM  CM  0.10 3 0.0
+OA   CM    CM  OM  0.10 3 0.0
+CM   CM    OM  CM  0.10 3 0.0
+CM   CM    CM  CM  1.60 3 0.0
+CM   CM    CM  CT  1.60 3 0.0
+OM   CM    CM  OM  0.10 3 0.0
+OM   CM    CM  CM  0.10 3 0.0
+
+NONBONDED
+HO     0.000000  -0.022000     1.320000
+OA     0.000000  -0.120000     1.700000
+OM     0.000000  -0.120000     1.700000
+CM     0.000000  -0.120000     2.244924
+CT     0.000000  -0.120000     2.244924
+
+END
+
