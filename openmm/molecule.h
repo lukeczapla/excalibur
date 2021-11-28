@@ -39,7 +39,7 @@ namespace OpenMM {
 		CMAPTorsionForce* cmaptorsion;
 		CMMotionRemover* cmmotion;
 		GBSAOBCForce* gbsa;
-		GBSAOBCForce* gbvi;
+		GBN2Force* gbvi;
 		OBC2Force* obc;
 		bool usegbsa, usegbvi;
 		int* atomgroups;

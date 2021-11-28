@@ -7,7 +7,7 @@ VIS_EXECUTABLE=visualizer
 
 CFLAGS=-O3 -Wall
 
-LINUXLIB=-lglut -lGL -lGLU -lm
+LINUXLIB=-lglut -lGL -lGLU -lm -lpthread
 OSXLIB=-framework opengl -framework glut -lm
 
 

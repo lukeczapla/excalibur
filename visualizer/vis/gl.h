@@ -1,7 +1,7 @@
 #ifndef _VIS_GL_H
 #define _VIS_GL_H
 
-#define ORTHOGRAPHIC 0
+#define ORTHOGRAPHIC 1
 
 #include <math.h>
 #include <stdio.h>

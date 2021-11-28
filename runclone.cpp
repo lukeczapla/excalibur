@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 		mysim->loadgamma(fopen("gbvigamma", "r"));
 		// SASA coefficients
 		mysim->loadgamma2(fopen("gbvigamma2", "r"));
-		mysim->useGBVI();
+		mysim->useGBSA();
 
 		// This is required to construct the system clones
 		mysim->setbox(96.0, 96.0, 96.0);
@@ -78,7 +78,7 @@ int main(int argc, char **argv) {
 
 		cout << "Serializing" << endl;
 		mysim->serializeSystem();
-		exit(0);
+		//exit(0);
 		
 		cout << "Minimizing the system" << endl;
 		mysim->steepestDescent(1000, 100);

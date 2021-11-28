@@ -5,7 +5,7 @@
 #include "openmm/simulation.h"
 #include "openmm/hexane.h"
 
-// MD simulation code using OpenMM written by Luke Czapla (luke.czapla@yahoo.com)
+// MD simulation code using OpenMM written by Luke Czapla (czaplaluke@gmail.com)
 
 using namespace OpenMM;
 

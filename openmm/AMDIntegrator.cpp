@@ -11,10 +11,12 @@ AMDDihedralIntegrator::AMDDihedralIntegrator(int group, double dt, double alphav
 	addGlobalVariable("alphaGroup", alpha);
 	addGlobalVariable("EGroup", E);
 	addGlobalVariable("groupEnergy", 0);
+	addGlobalVariable("deltaV", 0);
 	addPerDofVariable("oldx", 0);
 	addPerDofVariable("fg", 0);
 	addUpdateContextState();
 	addComputeGlobal("groupEnergy", "energy"+to_string(group));
+	addComputeGlobal("deltaV", "modify*(EGroup-groupEnergy)^2/(alphaGroup+EGroup-groupEnergy); modify=step(EGroup-groupEnergy)");
 	addComputePerDof("fg", "f"+to_string(group));
 	addComputePerDof("v", "v+dt*fprime/m; fprime=fother + fg*((1-modify) + modify*(alphaGroup/(alphaGroup+EGroup-groupEnergy))^2); fother=f-fg; modify=step(EGroup-groupEnergy)");
 	addComputePerDof("oldx", "x");
@@ -34,4 +36,7 @@ double AMDDihedralIntegrator::getBoostedEnergy(double groupEnergy) {
 	
 }
 
+double AMDDihedralIntegrator::getDeltaV() {
+	return getGlobalVariable(3);
+}
 

@@ -49,20 +49,29 @@ int main(int argc, char **argv) {
 //		mysim->dihedralBoostSystem(1, 90.0, 360.0);
 		
 		// here is the settings for the system, temperature, pressure, periodic box
-		mysim->setTemperature(310.0, 25);
-//		mysim->setPressure(1.0135, 10);
-		mysim->setPBCbox(6.4, 6.4, 6.4, 2.0);
+		mysim->setTemperature(310.0, 1.0);
+		mysim->setPressure(1.0135, 5.0);
+		mysim->setPBCbox(7.9, 7.9, 7.9, 1.2);
 		mysim->setTimestep_fs(2.0);
+#ifdef USE_PLATFORM
+		mysim->setPlatform(USE_PLATFORM);
+#endif
 
 		// for maintaining a zero center of mass motion 
 //		mysim->maintainCM();
+//		Platform::loadPluginsFromDirectory(Platform::getDefaultPluginsDirectory());
+                Platform::loadPluginsFromDirectory("plugins/");
 
-		Platform::loadPluginsFromDirectory(Platform::getDefaultPluginsDirectory());
-#ifdef USE_PLATFORM
-		mysim->setPlatform(USE_PLATFORM);
-		mysim->setPlatformProperty("CudaDeviceIndex", "0,1");
-#endif
 		mysim->setup();
+		mysim->setPlatformProperty("Precision", "mixed");
+                std::vector <std::string> properties = mysim->getPlatform().getPropertyNames();
+		for (int i = 0; i < properties.size(); i++) {
+                        cout << properties[i] << ": " << mysim->getPlatform().getPropertyValue(*mysim->getContext(), properties[i]) << endl;
+                }
+
+
+
+		//mysim->setup();
 		mysim->serializeSystem();
 		
 		cout << "Minimizing the system" << endl;
@@ -73,7 +82,7 @@ int main(int argc, char **argv) {
 
 		// this is for outputting the data
 		mysim->setupDCD("output-run.dcd");
-		mysim->run(2500000, 100);
+		mysim->run(2500000, 5000);
 		delete mysim;
 		
 	}

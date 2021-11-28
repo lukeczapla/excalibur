@@ -124,7 +124,7 @@ System* molecule::buildSystem(bool verbose) {
 		THROWERROR("GBSA OBC2 and GBVI are mutually exclusive");
 	}
 	if (usegbsa) gbsa = new GBSAOBCForce();
-	if (usegbvi) obc = new OBC2Force();
+	if (usegbvi) gbvi = new GBN2Force(78.5, 1.0, 3.0, 0.45);
 	bonded = new HarmonicBondForce();
 	angle = new HarmonicAngleForce();
 	torsion = new PeriodicTorsionForce*[Ngroups];
@@ -143,13 +143,14 @@ System* molecule::buildSystem(bool verbose) {
 			gbsa->addParticle(charge[n], radii[n] * NmPerAngstrom, 1.0);
 		}
 		else if (usegbvi) {
-			vector <double> parameters(5);
+			vector <double> parameters(6);
 			parameters[0] = charge[n];
 			parameters[1] = radii[n] * NmPerAngstrom;
 			parameters[2] = 1.0;
 			parameters[3] = gamma[n] * KJPerKcal;
 			parameters[4] = gamma2[n] * KJPerKcal;
-			obc->addParticle(parameters);
+			parameters[5] = gamma[n] * KJPerKcal;
+			gbvi->addParticle(parameters);
 		}
 		nonbonded->addParticle(charge[n], sigma[n] * NmPerAngstrom, epsilon[n] * KJPerKcal);
 		const Vec3 pos(x[n] * NmPerAngstrom, y[n] * NmPerAngstrom, z[n] * NmPerAngstrom);
@@ -252,26 +253,32 @@ System* molecule::buildSystem(bool verbose) {
 
 	nonbonded->setForceGroup(0);
 	bonded->setForceGroup(1);
-	angle->setForceGroup(1);
+	angle->setForceGroup(3);
 	system->addForce(nonbonded);
 	system->addForce(bonded);
 	system->addForce(angle);
-	for (int i = 0; i < Ngroups; i++) system->addForce(torsion[i]);
+	for (int i = 0; i < Ngroups; i++) {
+		torsion[i]->setForceGroup(2);
+		system->addForce(torsion[i]);
+	}
+	impropertorsion->setForceGroup(4);
 	system->addForce(impropertorsion);
 	if (hascmap) {
+		cmaptorsion->setForceGroup(2);
 		system->addForce(cmaptorsion);
 	}
 	
 	if (usegbsa) {
-		gbsa->setForceGroup(4);
+		gbsa->setForceGroup(5);
 		system->addForce(gbsa);
 	} else if (usegbvi) {
-		obc->setForceGroup(4);
-		system->addForce(obc);
+		gbvi->setForceGroup(5);
+		system->addForce(gbvi);
 	}
 	
 	if (usecm) {
 		cmmotion = new CMMotionRemover(1);
+		cmmotion->setForceGroup(6);
 		system->addForce(cmmotion);
 	}
 
@@ -293,7 +300,7 @@ System* molecule::buildSystemClone(int N, bool verbose) {
 		THROWERROR("GBSA OBC2 and GBVI are mutually exclusive");
 	}
 	if (usegbsa) gbsa = new GBSAOBCForce();
-	if (usegbvi) obc = new OBC2Force();
+	if (usegbvi) gbvi = new GBN2Force();
 	bonded = new HarmonicBondForce();
 	angle = new HarmonicAngleForce();
 	torsion = new PeriodicTorsionForce*[Ngroups];
@@ -314,15 +321,14 @@ System* molecule::buildSystemClone(int N, bool verbose) {
 			gbsa->addParticle(charge[n], radii[n] * NmPerAngstrom, 1.0);
 		}
 		else if (usegbvi) {
-			vector <double> parameters(5);
-			parameters[0] = charge[n];
-			parameters[1] = radii[n] * NmPerAngstrom;
-			parameters[2] = 1.0;
-			parameters[3] = gamma[n] * KJPerKcal;
-			parameters[4] = gamma2[n] * KJPerKcal;
-			// debugging statement below
-			printf("GBVI Particle %d : charge %lf, radius %lf, gamma %lf, gamma2 %lf, sigma %lf, epsilon %lf\n", X*Natoms+n, charge[n], radii[n], gamma[n], gamma2[n], sigma[n], epsilon[n]);
-			obc->addParticle(parameters);
+			vector <double> parameters(6);
+                        parameters[0] = charge[n];
+                        parameters[1] = radii[n] * NmPerAngstrom;
+                        parameters[2] = 1.0;
+                        parameters[3] = sigma[n] * KJPerKcal;
+                        parameters[4] = epsilon[n] * KJPerKcal;
+                        parameters[5] = gamma[n] * KJPerKcal;
+                        gbvi->addParticle(parameters);
 		}
 		nonbonded->addParticle(charge[n], sigma[n] * NmPerAngstrom, epsilon[n] * KJPerKcal);
 		Vec3 pos(x[n] * NmPerAngstrom, y[n] * NmPerAngstrom, z[n] * NmPerAngstrom);

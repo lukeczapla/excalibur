@@ -44,10 +44,10 @@ int main(int argc, char **argv) {
 		// here is the settings for the system, temperature, pressure, periodic box
 
 		Platform::loadPluginsFromDirectory(Platform::getDefaultPluginsDirectory());
-#ifdef USE_PLATFORM
-		mysim->setPlatform(USE_PLATFORM);
-		mysim->setPlatformProperty("CudaDeviceIndex", "0,1");
-#endif
+//#ifdef USE_PLATFORM
+		mysim->setPlatform("OpenCL");
+//		mysim->setPlatformProperty("OpenCLPrecision", "mixed");
+//#endif
 		mysim->setTimestep_fs(2.0);
 		mysim->setupXML();
 		

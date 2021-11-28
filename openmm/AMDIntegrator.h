@@ -16,11 +16,11 @@ public:
 	
 	AMDDihedralIntegrator(int group, double dt, double alpha, double E);
 	
-	inline double getalpha() {  return alpha;  }
-	inline void setalpha(double alphavalue) {  alpha = alphavalue;  }
+	inline double getAlpha() {  return alpha;  }
+	inline void setAlpha(double alphavalue) {  alpha = alphavalue;  }
 	
 	double getBoostedEnergy(double groupEnergy);
-	
+	double getDeltaV();
 	inline double getE() {  return E;  }
 	inline void setE(double Evalue) {  E = Evalue;  }
 

@@ -42,7 +42,7 @@ namespace OpenMM {
 		void setPressure(double P, double pfreq = 10) { usePressure = true;  pressure = P;  pressureFrequency = pfreq;  }
 		void setTimestep_fs(double ts_fs) { timestep_fs = ts_fs; }
 		void setPBCbox(double a, double b, double c, double cut) { usePBCbox = true; Lx = a; Ly = b; Lz = c; cutoff = cut; }
-		void setcutoff(double cut) { cutoff = cut; }
+		void setCutoff(double cut) { cutoff = cut; }
 		Context *getContext() { return context; }
 		void setPlatformProperty(std::string property, std::string value) { context->getPlatform().setPropertyValue(*context, property, value); }
 		Platform &getPlatform() { return context->getPlatform(); }
