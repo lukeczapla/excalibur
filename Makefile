@@ -2,12 +2,13 @@
 HOME=/home/luke
 
 # For Mac, you may want to brew install g++ for a real g++ compiler and replace this with g++-11 or whatever version you get
+# You could also just drop the -fopenmp flag but if you want to use it, it does work on Mac!
 COMPILER=g++
 
 # Check whether this is the right capitalization for your install directory.
 OPENMM_INSTALL_DIR=$(HOME)/miniconda3
-LIB_DIR=$(HOME)/miniconda3/lib
-INCLUDE_DIR=$(HOME)/miniconda3/include
+LIB_DIR=$(OPENMM_INSTALL_DIR)/lib
+INCLUDE_DIR=$(OPENMM_INSTALL_DIR)/include
 
 CFLAGS = -std=c++0x -Iopenmm -Imolecules -g -fopenmp -DCL_TARGET_OPENCL_VERSION=220
 
