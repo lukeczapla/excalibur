@@ -1,34 +1,15 @@
-# ----------------------------------------------------------------------
-# Makefile for OpenMM Preview Release 4 workshop "hello world" examples.
-# August 18, 2009
-# See https://simtk.org/home/openmm.
-# ----------------------------------------------------------------------
-# This assumes you have gcc compilers for whatever language you are
-# using: g++ for C++ and C, gfortran for Fortran 95.
-# 
-# For the C and Fortran examples, we're depending on your version of
-# OpenMM to have been built with the automatically-generated API
-# wrappers.
-#
-# This has had only minimal testing, although it has been known to
-# work. It is likely to work fine for C and C++. For Fortran, you
-# may need to add some of the C/C++ libraries: 
-#    -lc -lm -lstdc++ (or -lstdc++.6) -lgcc -lgcc_s
-# but this wasn't required for these examples on Centos 5.2 using
-# gcc 4.1.2.
 
 # Check whether this is the right capitalization for your install directory.
-OpenMM_INSTALL_DIR=/home/luke/miniconda3
-CFLAGS = -std=c++0x -Iopenmm -Imolecules -g 
-FFLAGS = -g -ffree-line-length-none
+OPENMM_INSTALL_DIR=/home/luke/miniconda3
+LIB_DIR=/home/luke/miniconda3/lib
+INCLUDE_DIR=/home/luke/miniconda3/include
 
-# This one is to specify the platform, uncomment and specify or it will detect
-#DEFINES = -DUSE_PLATFORM="\"OpenCL\""
+CFLAGS = -std=c++0x -Iopenmm -Imolecules -g -fopenmp -DCL_TARGET_OPENCL_VERSION=220
 
+# DEFUNCT! This one WAS to specify the platform, uncomment and specify or it will use OpenCL
+DEFINES = -DUSE_PLATFORM="\"OpenCL\""
 
-LIB_DIR=$(OpenMM_INSTALL_DIR)/lib
-INCLUDE_DIR=$(OpenMM_INSTALL_DIR)/include -I$(OpenMM_INSTALL_DIR)/include/openmm/internal
-LIBS=-L/usr/luke/miniconda3/lib -lOpenMM
+LIBS=-lOpenMM
 
 ALL_PROGS = runserialize runclone runclone-resume runmd runhexane runhexane_TI # rungcmc
 
