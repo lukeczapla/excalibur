@@ -1,5 +1,6 @@
+# Note you may also need something like this ``` export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/Users/lczapla/miniconda3/lib ```
 # Just edit me here, put your plugins in the plugins subfolder here, and good to go!
-HOME=/home/luke
+HOME=/Users/lczapla
 
 # For Mac, you may want to brew install g++ for a real g++ compiler and replace this with g++-11 or whatever version you get
 # You could also just drop the -fopenmp flag but if you want to use it, it does work on Mac!
@@ -10,7 +11,7 @@ OPENMM_INSTALL_DIR=$(HOME)/miniconda3
 LIB_DIR=$(OPENMM_INSTALL_DIR)/lib
 INCLUDE_DIR=$(OPENMM_INSTALL_DIR)/include
 
-CFLAGS = -std=c++0x -Iopenmm -Imolecules -g -fopenmp -DCL_TARGET_OPENCL_VERSION=220
+CFLAGS = -std=c++0x -Iopenmm -Imolecules -g -DCL_TARGET_OPENCL_VERSION=220 # -fopenmp
 
 # This one WAS to specify the platform, uncomment and specify or it will use OpenCL
 DEFINES = -DUSE_PLATFORM="\"OpenCL\""
