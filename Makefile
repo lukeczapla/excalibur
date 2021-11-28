@@ -40,7 +40,7 @@ runclone-resume: runclone-resume.cpp $(MYSOURCE)
 	$(COMPILER) $(CFLAGS) $(DEFINES) -I$(INCLUDE_DIR) runclone-resume.cpp $(MYSOURCE) \
 	-L$(LIB_DIR) $(LIBS) -o runclone-resume
 
-
+# runmd was the only one needed to run the proteins (e.g. Abl1 kinase in H2O with KCl)
 runmd: runmd.cpp $(MYSOURCE)
 	$(COMPILER) $(CFLAGS) $(DEFINES) -I$(INCLUDE_DIR) runmd.cpp $(MYSOURCE) \
 	-L$(LIB_DIR) $(LIBS) -o runmd
