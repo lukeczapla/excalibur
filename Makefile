@@ -1,12 +1,17 @@
+# Just edit me here, put your plugins in the plugins subfolder here, and good to go!
+HOME=/home/luke
+
+# For Mac, you may want to brew install g++ for a real g++ compiler and replace this with g++-11 or whatever version you get
+COMPILER=g++
 
 # Check whether this is the right capitalization for your install directory.
-OPENMM_INSTALL_DIR=/home/luke/miniconda3
-LIB_DIR=/home/luke/miniconda3/lib
-INCLUDE_DIR=/home/luke/miniconda3/include
+OPENMM_INSTALL_DIR=$(HOME)/miniconda3
+LIB_DIR=$(HOME)/miniconda3/lib
+INCLUDE_DIR=$(HOME)/miniconda3/include
 
 CFLAGS = -std=c++0x -Iopenmm -Imolecules -g -fopenmp -DCL_TARGET_OPENCL_VERSION=220
 
-# DEFUNCT! This one WAS to specify the platform, uncomment and specify or it will use OpenCL
+# This one WAS to specify the platform, uncomment and specify or it will use OpenCL
 DEFINES = -DUSE_PLATFORM="\"OpenCL\""
 
 LIBS=-lOpenMM
@@ -17,8 +22,6 @@ MYSOURCE = molecules/realmolecule.cpp molecules/charmmmolecule.cpp openmm/molecu
 
 GCMCSOURCE = openmm/gcmc.cpp
 HEXANESOURCE = openmm/hexane.cpp
-
-COMPILER=g++
 
 default: all
 
